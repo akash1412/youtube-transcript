@@ -57,18 +57,8 @@ export class YoutubeTranscript {
             body.actions[0].updateEngagementPanelAction.content
               .transcriptRenderer.body.transcriptBodyRenderer.cueGroups;
 
-          return transcripts.map((cue) => ({
-            text: cue.transcriptCueGroupRenderer.cues[0].transcriptCueRenderer
-              .cue.simpleText,
-            duration: parseInt(
-              cue.transcriptCueGroupRenderer.cues[0].transcriptCueRenderer
-                .durationMs
-            ),
-            offset: parseInt(
-              cue.transcriptCueGroupRenderer.cues[0].transcriptCueRenderer
-                .startOffsetMs
-            ),
-          }));
+          return  transcripts.map((cue) => cue.transcriptCueGroupRenderer.cues[0].transcriptCueRenderer
+          .cue.simpleText).join(' ');
         }
       }
     } catch (e) {
